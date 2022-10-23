@@ -60,7 +60,15 @@ def find_cookie_dir():
     ffdir = Path.home().joinpath(".mozilla/firefox/")
     paths = sorted(Path(ffdir).iterdir(), key=os.path.getatime)
 
-    return paths[-1].joinpath("cookies.sqlite")
+    # Add some smarter filtering to make sure the directory we're requesting
+    # is a profile and not some junk directory.
+    valid_paths = [
+        candidate
+        for candidate in paths
+        if candidate.joinpath(Path("cookies.sqlite")).exists()
+    ]
+
+    return valid_paths[-1].joinpath("cookies.sqlite")
 
 
 def main():
