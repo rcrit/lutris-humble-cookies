@@ -39,6 +39,16 @@ The two required cookies will be printed on stdout. This can be used to redirect
 
 I originally thought that three cookies were required but during development I found that only the `_simpleauth_sess` and `csrf_cookie` cookies are.
 
+# Troubleshooting
+
+`--debug` will print some debug information on `stderr`
+
+If you have multiple browser profiles then be sure to run this script immediately after re-logging into the Humble Bundle web site so the right profile directory is chosen. Otherwise you'll need to manually pass in the correct directory.
+
+# Requirements
+
+click
+
 # Flatpack / Steam Deck
 
 It is reported in the ticket that for Flatpack/Steam Deck users you should redirect the output to `~/.var/app/net.lutris.Lutris/cache/lutris/.humblebundle.auth` instead. This is unverified by me.
